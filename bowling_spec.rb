@@ -14,6 +14,10 @@ describe 'BowlingGame' do
     @game.roll(5)
   end
 
+  def roll_strike
+    @game.roll(10)
+  end
+
   it 'gutter game results in 0' do
     roll_many(20,0)
     expect(@game.score).to eq 0
@@ -32,10 +36,15 @@ describe 'BowlingGame' do
   end
 
   it 'test one strike' do
-    @game.roll(10)
+    roll_strike
     @game.roll(3)
     @game.roll(4)
     roll_many(16,0)
     expect(@game.score).to eq 24
+  end
+
+  it 'test perfect game' do
+    roll_many(12,10)
+    expect(@game.score).to eq 300
   end
 end

@@ -1,3 +1,5 @@
+require 'pry'
+
 class BowlingGame
   attr_reader :rolls, :total
   def initialize
@@ -39,8 +41,12 @@ class BowlingGame
   end
 
   def score_strike
-    @total += 10 + @rolls[@current_roll + 1] + @rolls[@current_roll + 2]
-    @current_roll += 1
+    if @rolls[@current_roll + 2] == nil
+      @current_roll += 2
+    else
+      @total += 10 + @rolls[@current_roll + 1] + @rolls[@current_roll + 2]
+      @current_roll += 1
+    end
   end
 
   def score_spare
