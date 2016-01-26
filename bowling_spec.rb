@@ -5,10 +5,13 @@ describe 'BowlingGame' do
     @game = BowlingGame.new
   end
 
-  describe 'gutter game' do
-    it 'results in 0' do
-      @game.roll(0)
-      expect(@game.score).to eq 0
-    end
+  it 'gutter game results in 0' do
+    20.times { @game.roll(0) }
+    expect(@game.score).to eq 0
+  end
+
+  it 'test all ones in game' do
+    20.times { @game.roll(1) }
+    expect(@game.score).to eq 20
   end
 end
