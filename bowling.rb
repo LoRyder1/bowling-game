@@ -14,7 +14,9 @@ class BowlingGame
     while @current_roll < @rolls.length - 1
       set_rolls
 
-      if spare?
+      if strike?
+        score_strike
+      elsif spare?
         score_spare
       else
         normal_score
@@ -23,14 +25,22 @@ class BowlingGame
     return @total
   end
 
+  def strike?
+    @roll == 10
+  end
+
   def spare?
-    # return false if @roll == 0
     @roll + @next_roll == 10
   end
 
   def set_rolls
     @roll = @rolls[@current_roll]
     @next_roll = @rolls[@current_roll + 1]
+  end
+
+  def score_strike
+    @total += 10 + @rolls[@current_roll + 1] + @rolls[@current_roll + 2]
+    @current_roll += 1
   end
 
   def score_spare
@@ -43,16 +53,3 @@ class BowlingGame
     @current_roll += 2
   end
 end
-
-x = BowlingGame.new
-
-x.roll(5)
-x.roll(5)
-x.roll(3)
-x.roll(0)
-# x.roll(7)
-# x.roll(2)
-# x.roll(7)
-# p x.rolls
-# # p x.is_spare(0)
-p x.score
