@@ -19,11 +19,11 @@ describe 'BowlingGame' do
     expect(@game.score).to eq 20
   end
 
-  # it 'test one spare' do
-  #   @game.roll(5)
-  #   @game.roll(5)
-  #   @game.roll(3)
-  #   roll_many(17,0)
-  #   expect(@game.score).to eq 15
-  # end
+  it 'test one spare' do
+    @game.roll(5)
+    @game.roll(5)
+    @game.roll(3)
+    roll_many(17,0)
+    expect(@game.score).to eq 15
+  end
 end
