@@ -5,13 +5,17 @@ describe 'BowlingGame' do
     @game = BowlingGame.new
   end
 
+  def roll_many rolls, pins
+    rolls.times { @game.roll(pins) }
+  end
+
   it 'gutter game results in 0' do
-    20.times { @game.roll(0) }
+    roll_many(20,0)
     expect(@game.score).to eq 0
   end
 
   it 'test all ones in game' do
-    20.times { @game.roll(1) }
+    roll_many(20,1)
     expect(@game.score).to eq 20
   end
 end
