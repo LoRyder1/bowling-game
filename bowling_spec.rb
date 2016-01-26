@@ -9,6 +9,11 @@ describe 'BowlingGame' do
     rolls.times { @game.roll(pins) }
   end
 
+  def roll_spare
+    @game.roll(5)
+    @game.roll(5)
+  end
+
   it 'gutter game results in 0' do
     roll_many(20,0)
     expect(@game.score).to eq 0
@@ -20,10 +25,9 @@ describe 'BowlingGame' do
   end
 
   it 'test one spare' do
-    @game.roll(5)
-    @game.roll(5)
+    roll_spare
     @game.roll(3)
     roll_many(17,0)
-    expect(@game.score).to eq 15
+    expect(@game.score).to eq 16
   end
 end
