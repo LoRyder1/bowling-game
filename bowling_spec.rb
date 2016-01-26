@@ -2,7 +2,7 @@ require_relative 'bowling'
 
 describe 'BowlingGame' do
   before(:each) do
-    @game = Game.new
+    @game = BowlingGame.new
   end
 
   describe 'gutter game' do
