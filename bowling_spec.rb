@@ -30,4 +30,12 @@ describe 'BowlingGame' do
     roll_many(17,0)
     expect(@game.score).to eq 16
   end
+
+  it 'test one strike' do
+    @game.roll(10)
+    @game.roll(3)
+    @game.roll(4)
+    roll_many(16,0)
+    expect(@game.score).to eq 24
+  end
 end
